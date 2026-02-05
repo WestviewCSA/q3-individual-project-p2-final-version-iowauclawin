@@ -1,3 +1,21 @@
 Questions:
 
 Write as many questions as you can based on the project specs.
+[C] What power does the diamond give Wolverine?
+[C] What does the open walkway do?
+[C] Is this Wolverine the same as the Marvel Comics one?
+[O] Is it possible to learn code from other students and implement into your own code?
+[C] Do we have to find the solution in a certain amount of runtime?
+[C] For the shortest path, can we use 2d array lists
+[O] By the time limit, does it mean in the code or in real life?
+[C] Will there be a case were no path is possible?
+[C] How big will the mazes get?
+[O] Is this question like a USACO bronze question?
+[C] For the commands, can we name them differently in our code?
+[C] Can multiple people come up with 5 test cases and all use those 5 test cases?
+[C] Will we be working on this project for the whole time period or will we be doing other projects as well?
+[C] How big is N?
+[C] If we have a program that can find all the bucks but not in the optimal path, how many extra credit points will we receive?
+
+I could get a better question by rewording my questions relating to the points we get depending on the runtime. For example, it would be better to ask how many for loops we can use that are nested while 
+still being on time for all the points
