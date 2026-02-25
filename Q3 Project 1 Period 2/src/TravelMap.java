@@ -14,14 +14,14 @@ public class TravelMap {
 			int column = r.nextInt();
 			int rooms = r.nextInt();
 			String[][] map = new String[row*rooms][column];
+			r.nextLine();
 			for(int i = 0; i < map.length; i++) {
-				String word = r.next();
+				String[] word = r.nextLine().split(" ");
 				for(int j = 0; j < column; j++) {
-					map[i][j] = word.substring(j,j+1);
-					System.out.print(map[i][j]);
+					map[i][j] = word[j];
 				}
-				System.out.println();
 			}
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
