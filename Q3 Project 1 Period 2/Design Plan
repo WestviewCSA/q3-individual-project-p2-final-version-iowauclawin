@@ -1,0 +1,2 @@
+Design Plan
+I plan to use the stack algorithm we made yesterday to find any valid paths for easyMap first. Then I'll try to make it so it works for any map
