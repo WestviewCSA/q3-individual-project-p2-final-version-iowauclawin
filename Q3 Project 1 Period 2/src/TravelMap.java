@@ -48,8 +48,9 @@ public class TravelMap {
 			symbolVisited.push("W");
 			for(int f = 0; f < rooms; f++) {
 				while(found == false) {
+					
 					//This is for North
-					if(rows.peek()-1 >= 0) {
+					if(rows.peek()-1 >= 0 && (map[rows.peek()-1][columns.peek()][f].equals(".") || map[rows.peek()-1][columns.peek()][f].equals("$"))) {
 						boolean getOut = false;
 						for(int i = 0; i < symbolVisited.size(); i++) {
 							if(rows.peek()-1 == traveledRows.get(i) && columns.peek() == traveledColumns.get(i)) {
@@ -70,7 +71,7 @@ public class TravelMap {
 						}
 					}
 					//This if for South
-					if(rows.peek()+1 < row) {
+					if(rows.peek()+1 < row && (map[rows.peek()+1][columns.peek()][f].equals(".") || map[rows.peek()+1][columns.peek()][f].equals("$"))) {
 						boolean getOut = false;
 						for(int i = 0; i < symbolVisited.size(); i++) {
 							if(rows.peek()+1 == traveledRows.get(i) && columns.peek() == traveledColumns.get(i)) {
@@ -91,7 +92,7 @@ public class TravelMap {
 						}
 					}
 					//This is for East
-					if(columns.peek()+1 < column) {
+					if(columns.peek()+1 < column && (map[rows.peek()][columns.peek()+1][f].equals(".") || map[rows.peek()][columns.peek()+1][f].equals("$"))) {
 						boolean getOut = false;
 						for(int i = 0; i < symbolVisited.size(); i++) {
 							if(rows.peek() == traveledRows.get(i) && columns.peek()+1 == traveledColumns.get(i)) {
@@ -112,7 +113,7 @@ public class TravelMap {
 						}
 					}
 					//This is for West
-					if(columns.peek()-1 >= 0) {
+					if(columns.peek()-1 >= 0 && (map[rows.peek()][columns.peek()-1][f].equals(".") || map[rows.peek()][columns.peek()-1][f].equals("$"))) {
 						boolean getOut = false;
 						for(int i = 0; i < symbolVisited.size(); i++) {
 							if(rows.peek() == traveledRows.get(i) && columns.peek()-1 == traveledColumns.get(i)) {
@@ -137,15 +138,19 @@ public class TravelMap {
 					symbolVisited.push(symbolFirst.peek());
 				}
 			}
-			for(int i = 0; i < traveledRows.size(); i++) {
-				map[traveledRows.get(i)][traveledColumns.get(i)][0] = "+";
+			for(int i = 0; i < symbolVisited.size(); i++) {
+				System.out.println(traveledRows.get(i) + " " + traveledColumns.get(i) + " " + symbolVisited.get(i));
 			}
-			for(int i = 0; i < row; i++) {
-				for(int j = 0; j < column; j++) {
-					System.out.print(map[i][j][0]);
-				}
-				System.out.println();
-			}
+			
+//			for(int i = 0; i < traveledRows.size(); i++) {
+//				map[traveledRows.get(i)][traveledColumns.get(i)][0] = "+";
+//			}
+//			for(int i = 0; i < row; i++) {
+//				for(int j = 0; j < column; j++) {
+//					System.out.print(map[i][j][0]);
+//				}
+//				System.out.println();
+//			}
 			
 			
 		} catch (FileNotFoundException e) {
