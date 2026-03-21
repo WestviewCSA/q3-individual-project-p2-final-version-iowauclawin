@@ -5,6 +5,8 @@ public class Cord {
 	private String symbol;
 	private Cord prev;
 	private boolean visited;
+	private int gCost;
+	private int hCost;
 	
 	public Cord(int x, int y, String symbol) {
 		this.x = x;
@@ -12,6 +14,8 @@ public class Cord {
 		this.symbol = symbol;
 		visited = false;
 		prev = null;
+		gCost = 0;
+		hCost = 0;
 	}
 	public int getX() {
 		return x;
@@ -33,5 +37,23 @@ public class Cord {
 	}
 	public void setVisit(boolean visited) {
 		this.visited = visited;
+	}
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+	public int getGCost() { 
+		return gCost; 
+	}
+	public int getHCost() { 
+		return hCost; 
+	}
+	public int getFCost() { 
+		return gCost + hCost; 
+	}
+	public void setGCost(int gCost) {
+		this.gCost = gCost; 
+	}
+	public void setHCost(int hCost) {
+		this.hCost = hCost; 
 	}
 }

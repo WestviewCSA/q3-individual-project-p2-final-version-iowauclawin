@@ -2,12 +2,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-
-public class TravelMapQueue {
-	
-	
+public class TravelMapStack {
 	public static void main(String[] args) {
-		File maps = new File("hardMap2");
+		File maps = new File("mediumMap1");
 		
 		try {
 			Scanner r = new Scanner(maps);
@@ -25,9 +22,9 @@ public class TravelMapQueue {
 					}
 				}
 			}
-			Queue<Integer> rows = new LinkedList<>();
-			Queue<Integer> columns = new LinkedList<>();
-			Queue<String> symbol = new LinkedList<>();
+			Stack<Integer> rows = new Stack<>();
+			Stack<Integer> columns = new Stack<>();
+			Stack<String> symbol = new Stack<>();
 
 			
 			for(int f = 0; f < rooms; f++) {
@@ -36,10 +33,11 @@ public class TravelMapQueue {
 						for(int j = 0; j < row; j++) {
 							for(int k = 0; k < column; k++) {
 								if(map[j][k][f].getSymbol().equals("W")) {
-									rows.offer(j);
-									columns.offer(k);
-									symbol.offer("W");
+									rows.push(j);
+									columns.push(k);
+									symbol.push("W");
 									map[j][k][f].setVisit(true);
+									System.out.println(j + " " + k);
 								}
 							}
 						}
@@ -48,25 +46,29 @@ public class TravelMapQueue {
 					int holderX = columns.peek();
 					int holderY = rows.peek();
 					
+					rows.pop();
+					columns.pop();
+					symbol.pop();
+					
 					//This is for North
 					if(holderY-1 >= 0 && map[holderY-1][holderX][f].getVisit() == false) {
 						if(map[holderY-1][holderX][f].getSymbol().equals(".")) {
 							map[holderY-1][holderX][f].setPrev(map[holderY][holderX][f]);
 							map[holderY-1][holderX][f].setVisit(true);
-							rows.offer(holderY-1);
-							columns.offer(holderX);
-							symbol.offer(".");
+							rows.push(holderY-1);
+							columns.push(holderX);
+							symbol.push(".");
 							
 						}
 						else if(map[holderY-1][holderX][f].getSymbol().equals("$") || map[holderY-1][holderX][f].getSymbol().equals("|")) {
 							map[holderY-1][holderX][f].setPrev(map[holderY][holderX][f]);
-							rows.offer(holderY-1);
-							columns.offer(holderX);
+							rows.push(holderY-1);
+							columns.push(holderX);
 							if(f == rooms-1) {
-								symbol.offer("$");
+								symbol.push("$");
 							}
 							else {
-								symbol.offer("|");
+								symbol.push("|");
 							}
 							break;
 						}	
@@ -77,20 +79,20 @@ public class TravelMapQueue {
 						if(map[holderY+1][holderX][f].getSymbol().equals(".")) {
 							map[holderY+1][holderX][f].setPrev(map[holderY][holderX][f]);
 							map[holderY+1][holderX][f].setVisit(true);
-							rows.offer(holderY+1);
-							columns.offer(holderX);
-							symbol.offer(".");
+							rows.push(holderY+1);
+							columns.push(holderX);
+							symbol.push(".");
 							
 						}
 						else if(map[holderY+1][holderX][f].getSymbol().equals("$") || map[holderY+1][holderX][f].getSymbol().equals("|")) {
 							map[holderY+1][holderX][f].setPrev(map[holderY][holderX][f]);
-							rows.offer(holderY+1);
-							columns.offer(holderX);
+							rows.push(holderY+1);
+							columns.push(holderX);
 							if(f == rooms-1) {
-								symbol.offer("$");
+								symbol.push("$");
 							}
 							else {
-								symbol.offer("|");
+								symbol.push("|");
 							}
 							break;
 						}	
@@ -101,20 +103,20 @@ public class TravelMapQueue {
 						if(map[holderY][holderX+1][f].getSymbol().equals(".")) {
 							map[holderY][holderX+1][f].setPrev(map[holderY][holderX][f]);
 							map[holderY][holderX+1][f].setVisit(true);
-							rows.offer(holderY);
-							columns.offer(holderX+1);
-							symbol.offer(".");
+							rows.push(holderY);
+							columns.push(holderX+1);
+							symbol.push(".");
 							
 						}
 						else if(map[holderY][holderX+1][f].getSymbol().equals("$") || map[holderY][holderX+1][f].getSymbol().equals("|")) {
 							map[holderY][holderX+1][f].setPrev(map[holderY][holderX][f]);
-							rows.offer(holderY);
-							columns.offer(holderX+1);
+							rows.push(holderY);
+							columns.push(holderX+1);
 							if(f == rooms-1) {
-								symbol.offer("$");
+								symbol.push("$");
 							}
 							else {
-								symbol.offer("|");
+								symbol.push("|");
 							}
 							break;
 						}	
@@ -125,27 +127,25 @@ public class TravelMapQueue {
 						if(map[holderY][holderX-1][f].getSymbol().equals(".")) {
 							map[holderY][holderX-1][f].setPrev(map[holderY][holderX][f]);
 							map[holderY][holderX-1][f].setVisit(true);
-							rows.offer(holderY);
-							columns.offer(holderX-1);
-							symbol.offer(".");
+							rows.push(holderY);
+							columns.push(holderX-1);
+							symbol.push(".");
 							
 						}
 						else if(map[holderY][holderX-1][f].getSymbol().equals("$") || map[holderY][holderX-1][f].getSymbol().equals("|")) {
 							map[holderY][holderX-1][f].setPrev(map[holderY][holderX][f]);
-							rows.offer(holderY);
-							columns.offer(holderX-1);
+							rows.push(holderY);
+							columns.push(holderX-1);
 							if(f == rooms-1) {
-								symbol.offer("$");
+								symbol.push("$");
 							}
 							else {
-								symbol.offer("|");
+								symbol.push("|");
 							}
 							break;
 						}	
 					}
-					rows.poll();
-					columns.poll();
-					symbol.poll();
+					
 				}
 				rows.clear();
 				columns.clear();
@@ -184,6 +184,4 @@ public class TravelMapQueue {
 		}
 		
 	}
-	
-	
 }
