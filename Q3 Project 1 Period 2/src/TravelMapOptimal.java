@@ -8,6 +8,7 @@ public class TravelMapOptimal {
         File maps = new File("hardMap1");
 
         try {
+        	long start = System.currentTimeMillis();
             Scanner r = new Scanner(maps);
             int row = r.nextInt();
             int column = r.nextInt();
@@ -104,6 +105,9 @@ public class TravelMapOptimal {
                 }
                 System.out.println();
             }
+            long end = System.currentTimeMillis();
+            long total = end-start;
+            System.out.println("Time elapsed is " + total + " ms");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

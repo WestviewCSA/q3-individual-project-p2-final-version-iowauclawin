@@ -7,6 +7,7 @@ public class TravelMapStack {
 		File maps = new File("mediumMap1");
 		
 		try {
+			Long start = System.currentTimeMillis();
 			Scanner r = new Scanner(maps);
 			int row = r.nextInt();
 			int column = r.nextInt();
@@ -176,6 +177,9 @@ public class TravelMapStack {
 					System.out.println();
 				}
 			}
+			long end = System.currentTimeMillis();
+            long total = end-start;
+            System.out.println("Time elapsed is " + total + " ms");
 			
 			
 		} catch (FileNotFoundException e) {
